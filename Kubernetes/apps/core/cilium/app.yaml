@@ -4,18 +4,20 @@ metadata:
   name: cilium
   namespace: argocd
 spec:
-  project: homelab          # restricts dest + repo
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: kube-system
+  project: homelab
   source:
     repoURL: https://helm.cilium.io
     chart: cilium
     targetRevision: 1.17.4
     helm:
       valueFiles:
-        - values.yaml       # Argo looks relative to this folder
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
