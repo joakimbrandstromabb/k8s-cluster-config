@@ -1,20 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps-of-apps
+  name: apps-of-apps          # ✅ unique in argocd namespace
   namespace: argocd
 spec:
   project: default
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd                # child apps set their own
+    namespace: argocd         # child apps will choose their own
+
   source:
     repoURL: https://github.com/joakimbrandstromabb/k8s-cluster-config.git
     targetRevision: macbookenv
-    path: Kubernetes/apps            # <— create this folder next
+    path: Kubernetes/apps      # make sure this folder exists in that branch
     directory:
-      recurse: true                  # discover every Application below
+      recurse: true            # discover every Application YAML below it
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true   # optional but harmless
