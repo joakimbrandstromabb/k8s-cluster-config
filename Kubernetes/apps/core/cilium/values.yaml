@@ -1,6 +1,15 @@
-cluster.name: homelab
-ipam.mode: kubernetes
-hubble.enabled: true
-hubble.ui.enabled: true
-kubeProxyReplacement: partial     # flip to strict later
-operator.replicas: 1
+cluster:
+  name: homelab
+
+ipam:
+  mode: kubernetes
+
+hubble:
+  enabled: true
+  ui:
+    enabled: true
+
+kubeProxyReplacement: partial      # flip to strict later
+
+operator:
+  replicas: 1
