@@ -11,6 +11,9 @@ commonAnnotations:
 namePrefix: kustom-
 nameSuffix: -v1
 
+generatorOptions:
+  disableNameSuffixHash: true  
+
 configMapGenerator:
   - name: mykustom-map
     env: config.properties

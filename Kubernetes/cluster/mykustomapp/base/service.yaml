@@ -3,8 +3,10 @@ kind: Service
 metadata:
   name: mywebapp
 spec:
+  selector:
+    app: mykustomapp
   ports:
-  - port: 80
-    protocol: TCP
-    name: flask
+    - port: 80
+      protocol: TCP
+      name: flask
   type: LoadBalancer
