@@ -10,6 +10,9 @@ hubble:
     enabled: true
     service:
       type: ClusterIP
+  relay:
+    enabled: true
+    replicas: 1
 
 kubeProxyReplacement: partial      # flip to strict later
 
