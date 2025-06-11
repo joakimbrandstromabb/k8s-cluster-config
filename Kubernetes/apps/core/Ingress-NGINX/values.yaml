@@ -1,0 +1,5 @@
+controller:
+  service:
+    type: LoadBalancer          # MetalLB hands out an IP
+  metrics:
+    enabled: true               # Prometheus-friendly

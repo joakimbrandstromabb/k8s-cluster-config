@@ -7,13 +7,13 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd          # child apps set their own
+    namespace: argocd                # child apps set their own
   source:
-    repoURL: https://github.com/<you>/k8s-cluster-config.git
-    path: apps
-    targetRevision: main
+    repoURL: https://github.com/joakimbrandstromabb/k8s-cluster-config.git
+    targetRevision: macbookenv
+    path: Kubernetes/apps            # <— create this folder next
     directory:
-      recurse: true            # let Argo discover all child apps
+      recurse: true                  # discover every Application below
   syncPolicy:
     automated:
       prune: true
