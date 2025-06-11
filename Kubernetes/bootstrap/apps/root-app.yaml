@@ -7,12 +7,12 @@ spec:
   project: default
   source:
     repoURL: https://github.com/joakimbrandstromabb/k8s-cluster-config.git
-    path: Kubernetes/cluster/homelab
     targetRevision: HEAD
+    path: Kubernetes/bootstrap
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:
-      prune: true
       selfHeal: true
+      prune: true

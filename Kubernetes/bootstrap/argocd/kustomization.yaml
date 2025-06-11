@@ -1,7 +1,4 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-namespace: argocd        # everything below gets placed in this ns
+# kustomization.yaml
 resources:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   - namespace.yaml
-  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.11.0/manifests/install.yaml
