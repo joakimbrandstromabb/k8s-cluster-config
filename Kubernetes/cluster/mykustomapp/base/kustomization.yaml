@@ -3,8 +3,7 @@ resources:
 - service.yaml
 
 labels:
-- key: app
-  value: mykustomapp
+  app: mykustomapp
 
 commonAnnotations:
   app: mykustom-annontations
