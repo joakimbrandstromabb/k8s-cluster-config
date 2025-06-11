@@ -16,8 +16,6 @@ hubble:                            # built-in flow visibility
 kubeProxyReplacement: partial      # keep kube-proxy for now; switch to strict later
 operator:
   replicas: 1
-  prometheus:
-    enabled: true
 
 prometheus:
   enabled: true
