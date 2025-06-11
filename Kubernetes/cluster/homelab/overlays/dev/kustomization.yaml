@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+patchesStrategicMerge:
+  - replicas.yaml
+configMapGenerator:
+  - name: app-config
+    files:
+      - config.properties

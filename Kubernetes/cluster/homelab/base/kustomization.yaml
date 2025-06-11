@@ -1,0 +1,15 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+
+
+commonLabels:
+  app: homelab-base
+commonAnnotations:
+  description: "Base resources for the homelab cluster"
+namespace: homelab
+configMapGenerator:
+  - name: homelab-config
+    files:
+      - config.properties
+      
