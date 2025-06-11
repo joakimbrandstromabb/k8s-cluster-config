@@ -8,6 +8,8 @@ hubble:
   enabled: true
   ui:
     enabled: true
+    service:
+      type: ClusterIP
 
 kubeProxyReplacement: partial      # flip to strict later
 
