@@ -6,10 +6,13 @@ metadata:
 spec:
   project: homelab
   source:
-    repoURL: https://helm.cilium.io
-    chart: cilium
-    targetRevision: 1.17.4
+    repoURL: https://github.com/joakimbrandstromabb/k8s-cluster-config.git
+    targetRevision: macbookenv          # branch that holds values.yaml
+    path: Kubernetes/apps/core/cilium   # folder that contains app.yaml + values.yaml
     helm:
+      repoURL: https://helm.cilium.io   # remote chart repository
+      chart: cilium
+      targetRevision: 1.17.4
       valueFiles:
         - values.yaml
   destination:
