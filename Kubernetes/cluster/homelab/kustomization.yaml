@@ -1,0 +1,6 @@
+resources:
+  - apps/calico
+  - apps/ingress
+  - apps/keycloak
+  - apps/longhorn
+  - apps/metallb

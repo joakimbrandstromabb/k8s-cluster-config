@@ -1,5 +1,0 @@
-resources:
-  - calico
-  - metallb
-  - ingress-nginx
-  - longhorn
