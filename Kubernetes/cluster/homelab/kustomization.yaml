@@ -1,6 +1,1 @@
-resources:
-  - ../../base
-
-# Example: grow the IP pool and turn on WireGuard in this env
-patches:
-  - path: ippool-patch.yaml
+resources: []

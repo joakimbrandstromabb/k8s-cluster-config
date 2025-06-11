@@ -6,23 +6,28 @@ metadata:
 spec:
   project: default
 
-  # Where to render the chart
+  # 🔹 Where the rendered manifests will be applied
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system        # Cilium runs here by convention
+    namespace: kube-system        # Cilium convention
 
-  # Source: pull Helm chart straight from upstream repo
+  # 🔹 Where ArgoCD reads *your* Git folder (so it can see values-homelab.yaml)
   source:
-    repoURL: https://helm.cilium.io
-    chart: cilium
-    targetRevision: 1.17.4        # ← pin exact minor/patch (latest stable today)  [oai_citation:0‡github.com](https://github.com/cilium/cilium?utm_source=chatgpt.com)
+    repoURL: https://github.com/your-org/k8s-cluster-config.git   # <- point at *your* repo
+    targetRevision: main
+    path: Kubernetes/core/cilium                                  # folder that holds the values file
+
+    # Tell ArgoCD to render the upstream chart with your values file
     helm:
+      repoURL: https://helm.cilium.io   # chart repository
+      chart: cilium
+      targetRevision: 1.17.4            # pin the exact version
       valueFiles:
-        - values-homelab.yaml
+        - values-homelab.yaml           # lives in the same Git folder
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true      # just in case kube-system didn’t exist (it always does)
+      - CreateNamespace=true
