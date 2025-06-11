@@ -2,11 +2,10 @@ resources:
   - deployment.yaml
   - service.yaml
 
-commonLabels:        # <-- change this
-  app: mykustomapp
-
-commonAnnotations:
-  app: mykustom-annotations
+labels:
+  - pairs:
+      app: mykustomapp
+    includeSelectors: true
 
 namePrefix: kustom-
 nameSuffix: -v1
