@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+spec:
+  project: default
+
+  # Where to render the chart
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system        # Cilium runs here by convention
+
+  # Source: pull Helm chart straight from upstream repo
+  source:
+    repoURL: https://helm.cilium.io
+    chart: cilium
+    targetRevision: 1.17.4        # ← pin exact minor/patch (latest stable today)  [oai_citation:0‡github.com](https://github.com/cilium/cilium?utm_source=chatgpt.com)
+    helm:
+      valueFiles:
+        - values-homelab.yaml
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true      # just in case kube-system didn’t exist (it always does)

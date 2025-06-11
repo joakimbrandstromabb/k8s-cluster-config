@@ -1,0 +1,23 @@
+# Cilium base settings – tweak as needed
+cni:
+  chainingMode: none
+
+ipam:
+  mode: kubernetes                 # kubelet already hands node CIDRs
+
+cluster:
+  name: homelab
+
+hubble:                            # built-in flow visibility
+  enabled: true
+  ui:
+    enabled: true
+
+kubeProxyReplacement: partial      # keep kube-proxy for now; switch to strict later
+operator:
+  replicas: 1
+  prometheus:
+    enabled: true
+
+prometheus:
+  enabled: true
