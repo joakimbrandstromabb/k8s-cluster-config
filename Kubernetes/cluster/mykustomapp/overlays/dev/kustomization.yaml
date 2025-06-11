@@ -4,4 +4,4 @@ resources:
 namespace: dev
 
 patches:
-- replicas.yaml
+- path: replicas.yaml
