@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: homelab
+  namespace: argocd
+spec:
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/<you>/k8s-cluster-config.git
+    - https://helm.cilium.io
+    - https://charts.longhorn.io
+    - https://charts.bitnami.com/bitnami      # metallb, nginx
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

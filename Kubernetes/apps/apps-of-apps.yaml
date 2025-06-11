@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homelab-root
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd          # child apps set their own
+  source:
+    repoURL: https://github.com/<you>/k8s-cluster-config.git
+    path: apps
+    targetRevision: main
+    directory:
+      recurse: true            # let Argo discover all child apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
