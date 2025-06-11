@@ -1,0 +1,20 @@
+cluster:
+  name: homelab
+
+ipam:
+  mode: kubernetes
+
+hubble:
+  enabled: true
+  ui:
+    enabled: true
+    service:
+      type: ClusterIP
+  relay:
+    enabled: true
+    replicas: 1
+
+kubeProxyReplacement: partial      # flip to strict later
+
+operator:
+  replicas: 1

@@ -6,30 +6,15 @@ metadata:
 spec:
   project: homelab
   source:
-    repoURL: https://helm.cilium.io       # pull chart straight from Helm repo
-    chart: cilium
-    targetRevision: 1.17.4                # chart version
+    repoURL: https://github.com/joakimbrandstromabb/k8s-cluster-config.git
+    targetRevision: macbookenv          # branch that holds values.yaml
+    path: Kubernetes/apps/core/cilium   # folder that contains app.yaml + values.yaml
     helm:
-      values: |-
-        cluster:
-          name: homelab
-
-        ipam:
-          mode: kubernetes
-
-        hubble:
-          enabled: true
-          relay:
-            enabled: true
-            replicas: 1
-          ui:
-            enabled: true
-            service:
-              type: ClusterIP
-
-        kubeProxyReplacement: partial
-        operator:
-          replicas: 1
+      repoURL: https://helm.cilium.io   # remote chart repository
+      chart: cilium
+      targetRevision: 1.17.4
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
