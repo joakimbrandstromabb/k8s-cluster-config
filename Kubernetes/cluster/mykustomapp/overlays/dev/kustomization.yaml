@@ -1,7 +1,9 @@
 resources:
-- ../../base
-
+  - ../../base
 namespace: dev
 
 patches:
-  - path: replicas.yaml
+  - target:
+      kind: Deployment
+      name: kustom-mywebapp-v1      # final name after prefix/suffix
+    path: replicas.yaml
