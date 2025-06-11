@@ -6,28 +6,30 @@ metadata:
 spec:
   project: default
 
-  # 🔹 Where the rendered manifests will be applied
+  # Where the rendered manifests go
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system        # Cilium convention
+    namespace: kube-system
 
-  # 🔹 Where ArgoCD reads *your* Git folder (so it can see values-homelab.yaml)
+  # —— Source settings ————————————————————————————
   source:
-    repoURL: https://github.com/your-org/k8s-cluster-config.git   # <- point at *your* repo
-    targetRevision: main
-    path: Kubernetes/core/cilium                                  # folder that holds the values file
+    # Your Git repo so ArgoCD can read the values file
+    repoURL: https://github.com/joakimbrandstromabb/k8s-cluster-config.git
+    targetRevision: macbookenv              # ← branch ArgoCD should track
+    path: Kubernetes/cluster/cilium         # ← exact folder (case-sensitive)
 
-    # Tell ArgoCD to render the upstream chart with your values file
+    # Pull the official Helm chart and render with our values file
     helm:
-      repoURL: https://helm.cilium.io   # chart repository
+      repoURL: https://helm.cilium.io
       chart: cilium
-      targetRevision: 1.17.4            # pin the exact version
+      targetRevision: 1.17.4                # pin the chart version
       valueFiles:
-        - values-homelab.yaml           # lives in the same Git folder
+        - values-homelab.yaml               # lives in this same folder
 
+  # —— Sync behaviour ————————————————————————————
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=true                # kube-system already exists, but harmless

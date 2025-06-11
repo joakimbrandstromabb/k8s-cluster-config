@@ -1,21 +1,19 @@
-# Cilium base settings – tweak as needed
+# Minimal, sane defaults for a home-lab kubeadm cluster
 cni:
-  chainingMode: none
+  chainingMode: none            # standalone CNI
 
 ipam:
-  mode: kubernetes                 # kubelet already hands node CIDRs
+  mode: kubernetes              # let kube-controller-manager hand out node CIDRs
 
 cluster:
   name: homelab
 
-hubble:                            # built-in flow visibility
+hubble:                         # flow visibility UI
   enabled: true
   ui:
     enabled: true
 
-kubeProxyReplacement: partial      # keep kube-proxy for now; switch to strict later
+kubeProxyReplacement: partial   # keep kube-proxy for now; flip to strict later
+
 operator:
   replicas: 1
-
-prometheus:
-  enabled: true
