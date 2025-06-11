@@ -27,7 +27,7 @@ spec:
             service:
               type: ClusterIP
 
-        kubeProxyReplacement: partial
+        kubeProxyReplacement: true
         operator:
           replicas: 1
   destination:
