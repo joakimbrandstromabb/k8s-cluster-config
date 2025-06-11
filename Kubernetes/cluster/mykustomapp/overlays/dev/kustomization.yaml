@@ -1,9 +1,6 @@
 resources:
   - ../../base
-namespace: dev
 
-patches:
-  - target:
-      kind: Deployment
-      name: kustom-mywebapp-v1      # final name after prefix/suffix
-    path: replicas.yaml
+replicas:
+  - name: kustom-mywebapp-v1
+    count: 2
