@@ -43,3 +43,5 @@ terraform.rc
 *.pem
 *.tgz
 secrets/
+*.env
+
