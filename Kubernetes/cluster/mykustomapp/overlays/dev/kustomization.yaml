@@ -3,4 +3,4 @@ resources:
 
 replicas:
   - name: kustom-mywebapp-v1
-    count: 2
+    count: 4
