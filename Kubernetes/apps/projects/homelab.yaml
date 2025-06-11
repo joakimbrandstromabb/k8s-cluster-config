@@ -8,7 +8,7 @@ spec:
     - namespace: '*'
       server: https://kubernetes.default.svc
   sourceRepos:
-    - https://github.com/<you>/k8s-cluster-config.git
+    - https://github.com/joakimbrandstromabb/k8s-cluster-config.git
     - https://helm.cilium.io
     - https://charts.longhorn.io
     - https://charts.bitnami.com/bitnami      # metallb, nginx

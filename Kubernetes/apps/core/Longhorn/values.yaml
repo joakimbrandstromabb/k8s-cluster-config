@@ -1,6 +1,0 @@
-defaultSettings:
-  defaultReplicaCount: 2           # single-node? set 1
-  defaultDataLocality: best-effort
-persistence:
-  defaultClass: true
-  reclaimPolicy: Delete
