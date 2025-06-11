@@ -1,0 +1,14 @@
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  name: default
+spec:
+  calicoNetwork:
+    ipPools:
+      - cidr: 192.168.194.0/25
+        encapsulation: VXLAN
+        nodeSelector: all()
+    nodeAddressAutodetectionV4:
+      interface: enp*
+  nodeMetricsPort: 9081
+  flexVolumePath: "/opt/libexec/kubernetes/kubelet-plugins/volume/exec/"
