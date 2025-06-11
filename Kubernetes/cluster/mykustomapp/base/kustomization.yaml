@@ -1,10 +1,9 @@
-
 resources: 
 - deployment.yaml
 - service.yaml
 
-commonLabels:
-  app: mykustomapp
+labels:
+- app: mykustomapp
 
 commonAnnotations:
   app: mykustom-annontations

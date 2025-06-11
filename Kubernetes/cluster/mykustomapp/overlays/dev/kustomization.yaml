@@ -1,7 +1,7 @@
-bases:
+resources:
 - ../../base
 
 namespace: dev
 
-patchesStrategicMerge:
+patches:
 - replicas.yaml
